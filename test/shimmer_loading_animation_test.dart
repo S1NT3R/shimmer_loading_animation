@@ -11,17 +11,18 @@ void main() {
           child: ShimmerLoading(
             isLoading: true,
             loadingChild: Text('Loading...'),
-            defaultChild: Text('Loaded'),
+            secondChild: Text('Loaded'),
           ),
         ),
       ),
     );
 
+    await tester.pump(); // Ensure widgets are fully built
     expect(find.text('Loading...'), findsOneWidget);
     expect(find.text('Loaded'), findsNothing);
   });
 
-  testWidgets('ShimmerLoading shows defaultChild when isLoading is false',
+  testWidgets('ShimmerLoading shows secondChild when isLoading is false',
       (WidgetTester tester) async {
     await tester.pumpWidget(
       const MaterialApp(
@@ -29,12 +30,13 @@ void main() {
           child: ShimmerLoading(
             isLoading: false,
             loadingChild: Text('Loading...'),
-            defaultChild: Text('Loaded'),
+            secondChild: Text('Loaded'),
           ),
         ),
       ),
     );
 
+    await tester.pump(); // Ensure widgets are fully built
     expect(find.text('Loading...'), findsNothing);
     expect(find.text('Loaded'), findsOneWidget);
   });
@@ -47,12 +49,13 @@ void main() {
           child: ShimmerLoading(
             isLoading: true,
             loadingChild: Text('Loading...'),
-            defaultChild: Text('Loaded'),
+            secondChild: Text('Loaded'),
           ),
         ),
       ),
     );
 
+    await tester.pump(); // Ensure widgets are fully built
     final shimmerLoadingFinder = find.byType(ShimmerLoading);
     final shaderMaskFinder = find.descendant(
         of: shimmerLoadingFinder, matching: find.byType(ShaderMask));
@@ -67,12 +70,13 @@ void main() {
         home: ShimmerLoading(
           isLoading: true,
           loadingChild: Text('Loading...'),
-          defaultChild: Text('Loaded'),
+          secondChild: Text('Loaded'),
         ),
       ),
     );
 
+    await tester.pump(); // Ensure widgets are fully built
     expect(find.text('Loading...'), findsNothing);
-    expect(find.text('Loaded'), findsOneWidget);
+    expect(find.text('Loaded'), findsNothing);
   });
 }

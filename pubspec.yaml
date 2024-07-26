@@ -1,7 +1,8 @@
 name: shimmer_loading_animation
-description: "A Flutter package to create shimmer loading animation."
-version: 0.0.1+1
+description: "A Flutter package to create shimmer loading animation in your application."
+version: 0.1.0
 homepage: https://github.com/S1NT3R/shimmer_loading_animation
+repository: https://github.com/S1NT3R/shimmer_loading_animation
 
 environment:
   sdk: '>=3.4.1 <4.0.0'
